@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand — extrait du logo SAO Motors Luxury */
+  --sml-ink: #0a0a0a;
+  --sml-steel: #141414;
+  --sml-silver: #9a9a9a;
+  --sml-sand: #ececec;
+  --sml-paper: #f5f5f5;
+  --sml-white: #ffffff;
+  --sml-accent: #e30613;
+  --sml-accent-hover: #b80510;
+  --sml-success: #1f7a45;
+  --sml-error: #e30613;
+  --sml-warning: #b45309;
+  --sml-info: #1e3a5f;
+  --sml-text: #0a0a0a;
+  --sml-text-muted: #5a5a5a;
+  --sml-text-on-dark: #f5f5f5;
+  --sml-border: #d4d4d4;
+  --sml-border-strong: #a3a3a3;
+  --sml-wa: #25d366;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-ink: var(--sml-ink);
+  --color-steel: var(--sml-steel);
+  --color-silver: var(--sml-silver);
+  --color-sand: var(--sml-sand);
+  --color-paper: var(--sml-paper);
+  --color-accent: var(--sml-accent);
+  --color-accent-hover: var(--sml-accent-hover);
+  --color-muted: var(--sml-text-muted);
+  --color-border: var(--sml-border);
+  --color-border-strong: var(--sml-border-strong);
+  --color-success: var(--sml-success);
+  --color-error: var(--sml-error);
+  --color-wa: var(--sml-wa);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+body {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  background: var(--sml-paper);
+  color: var(--sml-text);
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+}
+
+.font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--sml-ink);
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal 0.3s var(--ease) both;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+section {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Perforated panel vibe from façade */
+.pattern-mesh {
+  background-color: #0a0a0a;
+  background-image: radial-gradient(circle at 1px 1px, rgba(227, 6, 19, 0.35) 1px, transparent 0);
+  background-size: 10px 10px;
+}
