@@ -2,10 +2,10 @@
 
 ## Site (MVP)
 
-Application Next.js dans [`site/`](site/) :
+Application Next.js dans [`sao-motors-luxury/`](sao-motors-luxury/) :
 
 ```bash
-cd site && npm install && npm run dev
+cd sao-motors-luxury && npm install && npm run dev
 ```
 
 ## Étude & Master Spec
