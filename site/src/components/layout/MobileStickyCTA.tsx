@@ -10,7 +10,7 @@ export function MobileStickyCTA() {
       <div className="grid grid-cols-2 gap-2 p-2">
         <a
           href={`tel:${siteConfig.phone}`}
-          className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-accent text-sm font-semibold text-white"
+          className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-ink text-sm font-semibold text-white"
         >
           <Phone className="h-4 w-4" aria-hidden />
           Appeler
