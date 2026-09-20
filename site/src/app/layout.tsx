@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Syne } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -7,14 +7,14 @@ import { MobileStickyCTA } from "@/components/layout/MobileStickyCTA";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/seo/JsonLd";
 
-const syne = Syne({
+const display = Barlow_Condensed({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   weight: ["500", "600", "700", "800"],
 });
 
-const manrope = Manrope({
+const body = Barlow({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -34,12 +34,17 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [{ url: "/logo.png" }],
+  },
+  icons: {
+    icon: "/logo-64.png",
+    apple: "/logo-192.png",
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0D10",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
 };
@@ -48,7 +53,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${syne.variable} ${manrope.variable}`}>
+    <html lang="fr" className={`${display.variable} ${body.variable}`}>
       <body className="min-h-screen bg-paper text-ink antialiased">
         <a href="#contenu" className="skip-link">
           Aller au contenu

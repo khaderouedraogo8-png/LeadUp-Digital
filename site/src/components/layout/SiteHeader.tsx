@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
@@ -12,23 +13,37 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-paper/90 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.25rem]">
-        <Link href="/" className="focus-ring group shrink-0" onClick={() => setOpen(false)}>
-          <span className="font-display text-lg font-bold tracking-tight text-ink sm:text-xl">
-            SAO<span className="text-accent">.</span>Motors
-          </span>
-          <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.22em] text-muted">
-            Luxury · Ouagadougou
+    <header className="sticky top-0 z-40 border-b border-border bg-white">
+      <Container className="flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
+        <Link
+          href="/"
+          className="focus-ring flex shrink-0 items-center gap-2.5"
+          onClick={() => setOpen(false)}
+        >
+          <Image
+            src="/logo.png"
+            alt="SAO Motors Luxury"
+            width={44}
+            height={44}
+            className="h-11 w-11 rounded-full"
+            priority
+          />
+          <span className="hidden sm:block">
+            <span className="font-display text-xl font-bold leading-none tracking-[0.06em] text-ink uppercase">
+              SAO MOTORS
+            </span>
+            <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
+              Luxury · Ouagadougou
+            </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Principale">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Principale">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="focus-ring text-sm font-medium text-muted transition hover:text-ink"
+              className="focus-ring text-[13px] font-semibold uppercase tracking-wide text-muted transition hover:text-accent"
             >
               {l.label}
             </Link>
@@ -73,16 +88,13 @@ export function SiteHeader() {
       </Container>
 
       {open ? (
-        <div
-          id="mobile-nav"
-          className="border-t border-border bg-paper lg:hidden"
-        >
+        <div id="mobile-nav" className="border-t border-border bg-white lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="focus-ring py-3 text-base font-medium text-ink"
+                className="focus-ring py-3 font-display text-lg font-semibold tracking-wide text-ink"
                 onClick={() => setOpen(false)}
               >
                 {l.label}

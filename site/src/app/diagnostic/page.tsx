@@ -52,9 +52,6 @@ export default function DiagnosticPage() {
                 required: true,
                 placeholder: "Voyants, bruits, comportement…",
               },
-              { name: "year", label: "Année (optionnel)", type: "number", required: false },
-              { name: "mileage", label: "Kilométrage (optionnel)", type: "number", required: false },
-              { name: "preferredDate", label: "Date souhaitée (optionnel)", type: "date", required: false },
             ]}
           />
         </div>

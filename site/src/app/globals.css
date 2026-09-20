@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --sml-ink: #0b0d10;
-  --sml-steel: #1c2430;
-  --sml-silver: #8b95a5;
-  --sml-sand: #e8e2d6;
-  --sml-paper: #f7f6f3;
+  /* Brand — extrait du logo SAO Motors Luxury */
+  --sml-ink: #0a0a0a;
+  --sml-steel: #141414;
+  --sml-silver: #9a9a9a;
+  --sml-sand: #ececec;
+  --sml-paper: #f5f5f5;
   --sml-white: #ffffff;
-  --sml-accent: #b08d57;
-  --sml-accent-hover: #967846;
-  --sml-success: #2f6b4f;
-  --sml-error: #9b2c2c;
-  --sml-warning: #9a6b2f;
-  --sml-info: #2c527a;
-  --sml-text: #0b0d10;
-  --sml-text-muted: #5c6570;
-  --sml-text-on-dark: #f7f6f3;
-  --sml-border: #d9d4cb;
-  --sml-border-strong: #b7b1a6;
+  --sml-accent: #e30613;
+  --sml-accent-hover: #b80510;
+  --sml-success: #1f7a45;
+  --sml-error: #e30613;
+  --sml-warning: #b45309;
+  --sml-info: #1e3a5f;
+  --sml-text: #0a0a0a;
+  --sml-text-muted: #5a5a5a;
+  --sml-text-on-dark: #f5f5f5;
+  --sml-border: #d4d4d4;
+  --sml-border-strong: #a3a3a3;
   --sml-wa: #25d366;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -60,26 +61,16 @@ html {
 }
 
 body {
-  font-family: var(--font-body), system-ui, sans-serif;
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(176, 141, 87, 0.08), transparent 55%),
-    linear-gradient(180deg, var(--sml-paper) 0%, var(--sml-sand) 100%);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  background: var(--sml-paper);
   color: var(--sml-text);
   min-height: 100vh;
-}
-
-body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  letter-spacing: 0.01em;
 }
 
 .font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .skip-link {
@@ -100,7 +91,7 @@ body::before {
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -109,17 +100,24 @@ body::before {
 }
 
 .reveal {
-  animation: reveal 0.35s var(--ease) both;
+  animation: reveal 0.3s var(--ease) both;
 }
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(247, 246, 243, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(247, 246, 243, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .focus-ring:focus-visible {
   outline: 2px solid var(--sml-accent);
   outline-offset: 2px;
+}
+
+/* Perforated panel vibe from façade */
+.pattern-mesh {
+  background-color: #0a0a0a;
+  background-image: radial-gradient(circle at 1px 1px, rgba(227, 6, 19, 0.35) 1px, transparent 0);
+  background-size: 10px 10px;
 }

@@ -58,10 +58,10 @@ export default function AppointmentPage() {
                   { value: "electrique", label: "Électrique" },
                 ],
               },
-              { name: "preferredDate", label: "Date souhaitée (optionnel)", type: "date", required: false },
+              { name: "preferredDate", label: "Date souhaitée", type: "date", required: false },
               {
                 name: "slot",
-                label: "Créneau souhaité (optionnel)",
+                label: "Créneau",
                 type: "select",
                 required: false,
                 options: [
@@ -70,7 +70,7 @@ export default function AppointmentPage() {
                   { value: "indifferent", label: "Indifférent" },
                 ],
               },
-              { name: "message", label: "Message (optionnel)", type: "textarea", required: false },
+              { name: "message", label: "Message", type: "textarea", required: false },
             ]}
           />
         </div>

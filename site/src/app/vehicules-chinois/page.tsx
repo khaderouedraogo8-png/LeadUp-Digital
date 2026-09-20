@@ -54,9 +54,9 @@ export default function ChineseVehiclesPage() {
             Marques présentes sur le marché (références publiques)
           </h2>
           <p className="mt-3 max-w-2xl text-sm text-white/65">
-            Ces marques sont documentées dans la presse et chez des distributeurs
-            au Burkina. Leur apparition ici ne signifie pas un partenariat
-            officiel avec SAO Motors Luxury.
+            Marques présentes sur le marché et/ou affichées sur notre façade.
+            La prise en charge atelier se confirme modèle par modèle — aucun
+            partenariat constructeur n&apos;est inventé ici.
           </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {chineseBrandExamplesPublic.map((b) => (

@@ -5,9 +5,9 @@ type Variant = "primary" | "secondary" | "whatsapp" | "ghost" | "call" | "onDark
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-ink text-white hover:bg-steel border border-ink",
+    "bg-accent text-white hover:bg-accent-hover border border-accent",
   secondary:
-    "bg-transparent text-ink border border-ink/80 hover:border-accent hover:text-accent-hover",
+    "bg-transparent text-ink border border-ink/80 hover:border-accent hover:text-accent",
   whatsapp:
     "bg-wa text-white border border-wa hover:brightness-95",
   ghost:

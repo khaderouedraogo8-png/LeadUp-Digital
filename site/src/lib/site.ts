@@ -252,13 +252,14 @@ export const chineseBrandsConfirmed: { name: string; note?: string }[] = [
   { name: "Marques chinoises", note: "Liste exacte à confirmer avec l'atelier" },
 ];
 
+/** Marques visibles sur la façade atelier (Facebook / photo façade) */
 export const chineseBrandExamplesPublic = [
-  "Chery",
-  "Geely",
   "Changan",
-  "JMC",
+  "Maxus",
+  "Chery",
   "BYD",
-  "MG",
-  "Haval",
+  "JMC",
   "JAC",
+  "Haval",
+  "Jetour",
 ];
