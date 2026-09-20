@@ -4,7 +4,8 @@ export const siteConfig = {
   tagline: "Diagnostic et réparation de véhicules chinois à Ouagadougou",
   description:
     "Atelier à Ouagadougou : diagnostic électronique, entretien et réparation de véhicules chinois thermiques et électriques. Pièces d'origine. Appelez +226 79 75 55 55.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL || "https://sao-motors-luxury.vercel.app",
   phone: "+22679755555",
   phoneDisplay: "+226 79 75 55 55",
   whatsapp: "22679755555",
