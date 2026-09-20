@@ -1,11 +1,17 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button, LinkButton } from "@/components/ui/Button";
 import { waLink, waMessages } from "@/lib/wa";
 
 type Field =
-  | { name: string; label: string; type?: "text" | "tel" | "date" | "number"; required?: boolean; placeholder?: string }
+  | {
+      name: string;
+      label: string;
+      type?: "text" | "tel" | "date" | "number";
+      required?: boolean;
+      placeholder?: string;
+    }
   | {
       name: string;
       label: string;
@@ -13,7 +19,16 @@ type Field =
       required?: boolean;
       options: { value: string; label: string }[];
     }
-  | { name: string; label: string; type: "textarea"; required?: boolean; placeholder?: string };
+  | {
+      name: string;
+      label: string;
+      type: "textarea";
+      required?: boolean;
+      placeholder?: string;
+    };
+
+const inputClass =
+  "focus-ring mt-2 w-full rounded-sm border border-border-strong bg-white px-3.5 py-3 text-base text-ink placeholder:text-silver transition hover:border-ink/40";
 
 export function LeadForm({
   endpoint,
@@ -30,6 +45,7 @@ export function LeadForm({
   const [ref, setRef] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const successRef = useRef<HTMLDivElement>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,6 +71,9 @@ export function LeadForm({
       setRef(data.ref);
       setStatus("success");
       form.reset();
+      requestAnimationFrame(() => {
+        successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Erreur");
@@ -63,11 +82,18 @@ export function LeadForm({
 
   if (status === "success" && ref) {
     return (
-      <div className="border border-success/30 bg-success/5 p-6 sm:p-8" role="status">
-        <p className="font-display text-xl font-semibold text-ink">Demande reçue</p>
+      <div
+        ref={successRef}
+        className="border border-success/30 bg-success/5 p-6 sm:p-8"
+        role="status"
+        tabIndex={-1}
+      >
+        <p className="font-display text-2xl font-bold tracking-wide text-ink">
+          Demande reçue
+        </p>
         <p className="mt-2 text-muted">
-          Référence <span className="font-semibold text-ink">{ref}</span>. Un conseiller
-          SAO Motors Luxury vous contacte par téléphone ou WhatsApp.
+          Référence <span className="font-semibold text-ink">{ref}</span>.
+          Un conseiller SAO Motors Luxury vous contacte par téléphone ou WhatsApp.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <LinkButton
@@ -86,9 +112,8 @@ export function LeadForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate>
-      {/* honeypot */}
-      <div className="absolute -left-[9999px]" aria-hidden>
+    <form onSubmit={onSubmit} className="relative space-y-5" noValidate>
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
         <label>
           Site web
           <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" />
@@ -99,33 +124,32 @@ export function LeadForm({
         const err = fieldErrors[field.name];
         const id = `field-${field.name}`;
         const errId = `${id}-error`;
+        const isRequired = field.required !== false;
         return (
           <div key={field.name}>
             <label htmlFor={id} className="block text-sm font-semibold text-ink">
               {field.label}
-              {"required" in field && field.required !== false ? (
-                <span className="text-error"> *</span>
-              ) : null}
+              {isRequired ? <span className="text-accent"> *</span> : null}
             </label>
             {field.type === "textarea" ? (
               <textarea
                 id={id}
                 name={field.name}
-                required={field.required !== false}
+                required={isRequired}
                 placeholder={field.placeholder}
                 rows={4}
                 aria-describedby={err ? errId : undefined}
                 aria-invalid={!!err}
-                className="focus-ring mt-2 w-full border border-border-strong bg-white px-3 py-3 text-sm"
+                className={inputClass}
               />
             ) : field.type === "select" ? (
               <select
                 id={id}
                 name={field.name}
-                required={field.required !== false}
+                required={isRequired}
                 aria-describedby={err ? errId : undefined}
                 aria-invalid={!!err}
-                className="focus-ring mt-2 w-full border border-border-strong bg-white px-3 py-3 text-sm"
+                className={inputClass}
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -142,7 +166,7 @@ export function LeadForm({
                 id={id}
                 name={field.name}
                 type={field.type || "text"}
-                required={field.required !== false}
+                required={isRequired}
                 placeholder={field.placeholder}
                 inputMode={field.type === "tel" ? "tel" : undefined}
                 autoComplete={
@@ -154,11 +178,11 @@ export function LeadForm({
                 }
                 aria-describedby={err ? errId : undefined}
                 aria-invalid={!!err}
-                className="focus-ring mt-2 w-full border border-border-strong bg-white px-3 py-3 text-sm"
+                className={inputClass}
               />
             )}
             {err ? (
-              <p id={errId} className="mt-1 text-sm text-error">
+              <p id={errId} className="mt-1.5 text-sm text-error">
                 {err}
               </p>
             ) : null}
@@ -167,14 +191,19 @@ export function LeadForm({
       })}
 
       {error ? (
-        <p className="text-sm text-error" role="alert">
+        <p className="rounded-sm border border-error/20 bg-error/5 px-3 py-2 text-sm text-error" role="alert">
           {error === "VALIDATION_ERROR"
             ? "Vérifiez les champs indiqués."
-            : "Impossible d'envoyer la demande. Réessayez ou utilisez WhatsApp."}
+            : "Impossible d'envoyer. Réessayez ou contactez-nous sur WhatsApp."}
         </p>
       ) : null}
 
-      <Button type="submit" variant="primary" className="w-full sm:w-auto" disabled={status === "loading"}>
+      <Button
+        type="submit"
+        variant="primary"
+        className="w-full sm:w-auto"
+        disabled={status === "loading"}
+      >
         {status === "loading" ? "Envoi…" : submitLabel}
       </Button>
     </form>

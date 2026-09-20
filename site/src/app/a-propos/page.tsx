@@ -43,12 +43,10 @@ export default function AboutPage() {
               <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                 Localisation
               </dt>
-              <dd className="mt-2 text-ink">
-                Ouagadougou, Burkina Faso
+                  <dd className="mt-2 text-ink">
+                Ouaga 2000
                 <br />
-                <span className="text-sm text-muted">
-                  {siteConfig.address.localityNote}
-                </span>
+                Ouagadougou, Burkina Faso
               </dd>
             </div>
           </dl>

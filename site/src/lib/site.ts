@@ -11,11 +11,16 @@ export const siteConfig = {
   email: null as string | null, // [À VÉRIFIER]
   facebookUrl: "https://www.facebook.com/profile.php?id=61573984872787",
   mapsUrl: "https://maps.app.goo.gl/3hmCATLt7anaEjYN9",
+  mapsEmbedUrl:
+    "https://www.google.com/maps?q=Sao+Motors+LUXURY,+Ouaga+2000,+Ouagadougou&hl=fr&z=16&output=embed",
+  mapsPlaceUrl:
+    "https://www.google.com/maps/place/Sao+Motors+LUXURY,+Ouaga+2000,+Ouagadougou",
   address: {
-    line1: "Ouagadougou",
-    line2: "Burkina Faso",
-    localityNote: "Localisation précise à confirmer", // [À VÉRIFIER]
-    areaHint: "Zone Ouaga 2000 / agglomération — à confirmer",
+    line1: "Ouaga 2000",
+    line2: "Ouagadougou, Burkina Faso",
+    localityNote: "Sao Motors LUXURY — Ouaga 2000",
+    areaHint: "Ouaga 2000",
+    plusCode: "8F6H+VHF",
   },
   hours: [
     { days: "Lun – Sam", time: "Horaires à confirmer" }, // [À VÉRIFIER]

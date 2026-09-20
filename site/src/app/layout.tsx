@@ -3,7 +3,6 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { MobileStickyCTA } from "@/components/layout/MobileStickyCTA";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/seo/JsonLd";
 
@@ -60,11 +59,8 @@ export default function RootLayout({
         </a>
         <JsonLd />
         <SiteHeader />
-        <main id="contenu" className="pb-20 lg:pb-0">
-          {children}
-        </main>
+        <main id="contenu">{children}</main>
         <SiteFooter />
-        <MobileStickyCTA />
       </body>
     </html>
   );
