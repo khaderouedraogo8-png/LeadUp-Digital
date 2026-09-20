@@ -11,7 +11,7 @@ Site officiel MVP de **SAO Motors Luxury** (Ouagadougou).
 ## Démarrage
 
 ```bash
-cd site
+cd sao-motors-luxury
 npm install
 npm run dev
 ```
